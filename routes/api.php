@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +37,9 @@ Route::controller(CartController::class)->group(function () {
     Route::post('cart/add', 'add');
     Route::patch('cart/update/{cart}', 'update');
     Route::delete('cart/remove/{cart}', 'remove');
+});
+
+Route::controller(OrderController::class)->group(function () {
+    Route::get('orders/get', 'index');
+    Route::post('order/create', 'checkout');
 });
